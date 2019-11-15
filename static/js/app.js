@@ -19,9 +19,34 @@ function buildMetadata(sample) {
 function buildCharts(sample) {
 
   // @TODO: Use `d3.json` to fetch the sample data for the plots
+  d3.json(`/samples/${sample}`).then((data) => {
+    const otu_ids = data.otu_ids;
+    const otu_lables = data.otu_lables;
+    const sample_values = data.sample_values;
 
     // @TODO: Build a Bubble Chart using the sample data
+    var bc_layout ={
+      margin : { t: 0},
+      hovermode: "closest",
+      xaxis: { title: "ID"}
+    };
+    
+    var bc_data = [
+      {
+      mode: "markers",
+      x: otu_ids,
+      y: sample_values,
+      text: otu_lables,
+      markers: {
+        color: otu_ids
+        size: sample_values,
+        colorscale: "Magma"
+       }
+      }
+    ];
 
+  
+    Ploty.newPlot("plot", bc_data, bc_layout);
     // @TODO: Build a Pie Chart
     // HINT: You will need to use slice() to grab the top 10 sample_values,
     // otu_ids, and labels (10 each).
