@@ -25,7 +25,7 @@ function buildCharts(sample) {
     const sample_values = data.sample_values;
 
     // @TODO: Build a Bubble Chart using the sample data
-    var bc_layout ={
+    var bc_layout = {
       margin : { t: 0},
       hovermode: "closest",
       xaxis: { title: "ID"}
@@ -40,16 +40,35 @@ function buildCharts(sample) {
       markers: {
         color: otu_ids
         size: sample_values,
-        colorscale: "Magma"
+        colorscale: "Rainbow"
        }
       }
     ];
 
   
     Ploty.newPlot("plot", bc_data, bc_layout);
+
     // @TODO: Build a Pie Chart
     // HINT: You will need to use slice() to grab the top 10 sample_values,
     // otu_ids, and labels (10 each).
+
+
+    let p_layout = {
+      margin: { t: 0, l: 0 }
+    };
+    
+    let p_data = [
+      {
+        values: sample_values.slice(0, 10),
+        labels: otu_ids.slice(0, 10),
+        hovertext: otu_labels.slice(0, 10),
+        hoverinfo: "hovertext",
+        type: "pie"
+      }
+    ];
+
+    Plotly.plot("pie", p_data, p_layout)
+})
 }
 
 function init() {
