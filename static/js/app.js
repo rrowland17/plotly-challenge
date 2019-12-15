@@ -67,7 +67,7 @@ function buildCharts(sample) {
     ];
 
     Plotly.plot("pie", p_data, p_layout);
-});
+  });
 }
 
 function init() {
