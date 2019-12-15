@@ -47,7 +47,7 @@ function buildCharts(sample) {
     ];
 
   
-    Plotly.newPlot("plot", bc_data, bc_layout);
+    Plotly.plot("plot", bc_data, bc_layout);
 
     // @TODO: Build a Pie Chart
     // HINT: You will need to use slice() to grab the top 10 sample_values,
@@ -66,8 +66,8 @@ function buildCharts(sample) {
       }
     ];
 
-    Plotly.plot("pie", p_data, p_layout)
-})
+    Plotly.plot("pie", p_data, p_layout);
+});
 }
 
 function init() {
