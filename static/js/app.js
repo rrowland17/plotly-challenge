@@ -38,8 +38,8 @@ function buildCharts(sample) {
       y: sample_values,
       text: otu_lables,
       markers: {
-        color: otu_ids
-        size: sample_values,
+        color:otu_ids,
+        size:sample_values,
         colorscale: "Rainbow"
        }
       }
